@@ -3,6 +3,7 @@ var request = require('request')
 
 var callback = function (error, response, body) {
   	output = JSON.parse(body);
+    console.log(output)
   if(output['status']=='success'){
   	process.exit(0)
   }
@@ -22,7 +23,6 @@ request({
         'body': JSON.stringify({foo: 'bar'})
       }]
 }, function(error, response, body){
-		console.log("polling status")
 		request('http://localhost:4200/status', callback)
 })
 
